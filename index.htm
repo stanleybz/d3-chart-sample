@@ -2,8 +2,7 @@
 <html lang=zh>
     <meta charset=utf-8>
     <meta content="width=device-width,initial-scale=1" name=viewport>
-    <title>Relationship Visualization</title>
-    <meta content=D3.js,4.0,relationship,关系图 name=keywords>
+    <title>D3 linked node sample</title>
     <meta content="" name=description>
     <link href=./css/relationship.css rel=stylesheet>
     <div>
@@ -15,14 +14,11 @@
         <script src=js/d3.min.js></script>
         <script src=relation.js></script>
         <script>
-
-
-
             var canvas = document.querySelector("canvas")
               , width = 1500
               , height = 1500;
 
-            d3.json("http://antimatter.wemine.net/store/at_wemine_cn_demo_wheel?per_page=1000", function(r, o){
+            d3.json("http://localhost:8000/store/?per_page=1000", function(r, o){
 
               var maxColor = 255;
               var minColor = 80;
@@ -81,7 +77,7 @@
               var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://api.wemine.net/follower?per_page=1000",
+                "url": "http://localhost:8000/follower?per_page=1000",
                 "method": "GET",
                 "headers": {
                   "authorization-x": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyNiwiZW1haWwiOiJyYS13ZW1pbmUtZGVtbyIsInVzZXJuYW1lIjoicmEtd2VtaW5lLWRlbW8iLCJjb21wYW55X25hbWUiOiJXZW1pbmUgRGVtbyIsImNvbXBhbnlfbG9nbyI6Imh0dHBzOlwvXC9yb2xsYW5nbGUuY29tXC93cC1jb250ZW50XC91cGxvYWRzXC8yMDEzXC8xMlwvcmFfbG9nby5wbmciLCJjb19pZCI6IndlbWluZV9kZW1vIiwicm9sZSI6MCwicGVybWlzc2lvbiI6WyJob21lIiwibWVudU1hbmFnZW1lbnQiLCJhdXRvUmVwbHkiLCJtZWRpYU5ld3MiLCJncm91cE1hbmFnZW1lbnQiLCJ0YWdNYW5hZ2VtZW50IiwiZm9sbG93ZXJNYW5hZ2VtZW50IiwibWVkaWFNYW5hZ2VtZW50IiwibWVzc2FnZU1hbmFnZW1lbnQiXSwibGFzdF9sb2dpbiI6IjIwMTctMTEtMjMgMTY6MDA6MzMiLCJpcF9udW1iZXIiOjM3NTQyOTA1NjMsImJyb3dzZXJfbmFtZSI6Ikdvb2dsZSBDaHJvbWU2Mi4wLjMyMDIuOTQifQ.B_7R55lMtCk2i9xvZTa9dCcsaUp-iNPCAd1QxEZqiRI",
@@ -178,38 +174,6 @@
 
 
             });
-
-            // d3.csv("./nodes.csv", function(r, o) {
-            //     for (var t = (o.length, 4), i = [], e = 1; e <= t; e++) {
-            //         console.log(t);
-            //         i.push({
-            //             source: 0,
-            //             target: e
-            //         });
-            //     }
-            //
-            //     for (var e = t + 1; e < o.length; e++) {
-            //         i.push({
-            //             source: e % t + 1,
-            //             target: e
-            //         });
-            //     }
-            //
-            //     initColor(o),
-            //     initRadius(o);
-            //
-            //     console.log(JSON.stringify(o) ,JSON.stringify(i));
-            //     var s = new relation;
-            //     s.setNodes([{"id":"0","name":"Geoff","color":"#007FFF","radius":108},{"id":"1","name":"School","color":"#A142FF","radius":14},{"id":"2","name":"Company","color":"#FF85C2","radius":14},{"id":"3","name":"Family","color":"#FFA142","radius":14},{"id":"4","name":"Network","color":"#FF4242","radius":14},{"id":"5","name":"Aaron","color":"rgb(255, 227, 255)","radius":10},{"id":"6","name":"Abbott","color":"rgb(255, 255, 113)","radius":10},{"id":"7","name":"Jacob","color":"rgb(255, 113, 113)","radius":10},{"id":"8","name":"James","color":"rgb(255, 113, 255)","radius":10},{"id":"9","name":"Kelvin","color":"rgb(255, 227, 255)","radius":10},{"id":"10","name":"Kendall","color":"rgb(255, 255, 113)","radius":10},{"id":"11","name":"Kendrick","color":"rgb(255, 113, 113)","radius":10},{"id":"12","name":"Leroy","color":"rgb(255, 113, 255)","radius":10},{"id":"13","name":"Leslie","color":"rgb(255, 227, 255)","radius":10},{"id":"14","name":"Lester","color":"rgb(255, 255, 113)","radius":10},{"id":"15","name":"Magnus","color":"rgb(255, 113, 113)","radius":10},{"id":"16","name":"Malcolm","color":"rgb(255, 113, 255)","radius":10},{"id":"17","name":"Melvin","color":"rgb(255, 227, 255)","radius":10},{"id":"18","name":"Perry","color":"rgb(255, 255, 113)","radius":10},{"id":"19","name":"Peter","color":"rgb(255, 113, 113)","radius":10},{"id":"20","name":"Peyton","color":"rgb(255, 113, 255)","radius":10},{"id":"21","name":"Royce","color":"rgb(255, 227, 255)","radius":10},{"id":"22","name":"Rufus","color":"rgb(255, 255, 113)","radius":10},{"id":"23","name":"Rupert","color":"rgb(255, 113, 113)","radius":10},{"id":"24","name":"Hadden","color":"rgb(255, 113, 255)","radius":10},{"id":"25","name":"Hadley","color":"rgb(255, 227, 255)","radius":10},{"id":"26","name":"Hadwin","color":"rgb(255, 255, 113)","radius":10},{"id":"27","name":"Hal","color":"rgb(255, 113, 113)","radius":10},{"id":"28","name":"Halbert","color":"rgb(255, 113, 255)","radius":10},{"id":"29","name":"Halden","color":"rgb(255, 227, 255)","radius":10},{"id":"30","name":"Hale","color":"rgb(255, 255, 113)","radius":10},{"id":"31","name":"Gilroy","color":"rgb(255, 113, 113)","radius":10},{"id":"32","name":"Glenn","color":"rgb(255, 113, 255)","radius":10},{"id":"33","name":"Goddard","color":"rgb(255, 227, 255)","radius":10},{"id":"34","name":"Godfrey","color":"rgb(255, 255, 113)","radius":10},{"id":"35","name":"Godwin","color":"rgb(255, 113, 113)","radius":10},{"id":"36","name":"Graham","color":"rgb(255, 113, 255)","radius":10},{"id":"37","name":"Grant","color":"rgb(255, 227, 255)","radius":10},{"id":"38","name":"Tobias","color":"rgb(255, 255, 113)","radius":10},{"id":"39","name":"Toby","color":"rgb(255, 113, 113)","radius":10},{"id":"40","name":"Todd","color":"rgb(255, 113, 255)","radius":10},{"id":"41","name":"Tony","color":"rgb(255, 227, 255)","radius":10},{"id":"42","name":"Travis","color":"rgb(255, 255, 113)","radius":10},{"id":"43","name":"Trent","color":"rgb(255, 113, 113)","radius":10},{"id":"44","name":"Trevor","color":"rgb(255, 113, 255)","radius":10},{"id":"45","name":"Tristan","color":"rgb(255, 227, 255)","radius":10},{"id":"46","name":"Troy","color":"rgb(255, 255, 113)","radius":10},{"id":"47","name":"Truman","color":"rgb(255, 113, 113)","radius":10},{"id":"48","name":"Tyler","color":"rgb(255, 113, 255)","radius":10}] ),
-            //     s.setLinks([{"source":0,"target":1},{"source":0,"target":2},{"source":0,"target":3},{"source":0,"target":4},{"source":2,"target":5},{"source":3,"target":6},{"source":4,"target":7},{"source":1,"target":8},{"source":2,"target":9},{"source":3,"target":10},{"source":4,"target":11},{"source":1,"target":12},{"source":2,"target":13},{"source":3,"target":14},{"source":4,"target":15},{"source":1,"target":16},{"source":2,"target":17},{"source":3,"target":18},{"source":4,"target":19},{"source":1,"target":20},{"source":2,"target":21},{"source":3,"target":22},{"source":4,"target":23},{"source":1,"target":24},{"source":2,"target":25},{"source":3,"target":26},{"source":4,"target":27},{"source":1,"target":28},{"source":2,"target":29},{"source":3,"target":30},{"source":4,"target":31},{"source":1,"target":32},{"source":2,"target":33},{"source":3,"target":34},{"source":4,"target":35},{"source":1,"target":36},{"source":2,"target":37},{"source":3,"target":38},{"source":4,"target":39},{"source":1,"target":40},{"source":2,"target":41},{"source":3,"target":42},{"source":4,"target":43},{"source":1,"target":44},{"source":2,"target":45},{"source":3,"target":46},{"source":4,"target":47},{"source":1,"target":48}]),
-            //     s.setCanvas(canvas),
-            //     s.setSize(width, height),
-            //     s.setRadius(12),
-            //     s.setLinkLength(90),
-            //     s.setCharge(-60),
-            //     s.init(),
-            //     s.run()
-            // })
         </script>
 </div>
 </body>
